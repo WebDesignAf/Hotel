@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رستورانت نصیب - طعم متفاوت در قلب کابل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Noto Sans Arabic', sans-serif;
+        }
+        
+        .hero-video {
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #CD853F 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-video::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .menu-card {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: #D2691E;
+            box-shadow: 0 10px 25px rgba(210, 105, 30, 0.2);
+        }
+        
+        .gallery-item {
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #D2691E;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #D2691E, #CD853F);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #B8860B, #D2691E);
+            transform: translateY(-2px);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 3px;
+            background: #D2691E;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-orange-600">
+                    🍽️ رستورانت نصیب
+                </div>
+                <nav class="hidden md:flex space-x-reverse space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-orange-600 font-medium">خانه</a>
+                    <a href="#menu" class="nav-link text-gray-700 hover:text-orange-600 font-medium">منو</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-orange-600 font-medium">درباره ما</a>
+                    <a href="#gallery" class="nav-link text-gray-700 hover:text-orange-600 font-medium">گالری</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-orange-600 font-medium">تماس با ما</a>
+                </nav>
+                <button class="md:hidden text-gray-700" onclick="toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-orange-600">خانه</a>
+                <a href="#menu" class="block py-2 text-gray-700 hover:text-orange-600">منو</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-orange-600">درباره ما</a>
+                <a href="#gallery" class="block py-2 text-gray-700 hover:text-orange-600">گالری</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-orange-600">تماس با ما</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-video min-h-screen flex items-center justify-center">
+        <!-- 🎥 اینجا لینک ویدیو محیط رستورانت را اضافه کنید -->
+        <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover">
+            <source src="C:\Users\KARIMI\Desktop\Templates\Hotle\نصيب_رستورانت(360p).mp4" type="video/mp4">
+        </video>
+        
+        <div class="hero-content text-center text-white px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                طعم متفاوت در قلب کابل
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                تجربه‌ای فراموش‌نشدنی از غذاهای اصیل افغانی
+            </p>
+            <button onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})" 
+                    class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg">
+                مشاهده منو
+            </button>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-4xl font-bold text-center text-gray-800 mb-16">منوی ویژه ما</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس کباب کوبیده را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\کباب کوبیده.PNG" alt="کباب کوبیده" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">کباب کوبیده مخصوص</h3>
+                        <p class="text-gray-600 mb-4">کباب کوبیده تازه با گوشت مرغوب و ادویه‌های خاص</p>
+                        <div class="text-2xl font-bold text-orange-600">۲۵۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس قابلی پلو را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\قابلی.PNG" alt="قابلی پلو" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">قابلی پلو افغانی</h3>
+                        <p class="text-gray-600 mb-4">برنج معطر با گوشت و کشمش و هویج</p>
+                        <div class="text-2xl font-bold text-orange-600">۳۰۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس کباب تکه را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\کباب تکه.PNG" alt="کباب تکه" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">کباب تکه مخصوص</h3>
+                        <p class="text-gray-600 mb-4">تکه‌های گوشت نرم و طعم‌دار روی آتش</p>
+                        <div class="text-2xl font-bold text-orange-600">۳۵۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس سالاد را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\سالاد.PNG" alt="سالاد" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">سالاد مخلوط</h3>
+                        <p class="text-gray-600 mb-4">سالاد تازه با سبزیجات محلی</p>
+                        <div class="text-2xl font-bold text-orange-600">۱۲۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس قورمه را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\قورمه سبزی.PNG" alt="قورمه سبزی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">قورمه سبزی</h3>
+                        <p class="text-gray-600 mb-4">قورمه سبزی خوشمزه با گوشت و لوبیا</p>
+                        <div class="text-2xl font-bold text-orange-600">۲۸۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 6 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس ماهی را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\ماهی کبابی.PNG" alt="ماهی کبابی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">ماهی کبابی</h3>
+                        <p class="text-gray-600 mb-4">ماهی تازه با ادویه‌های مخصوص</p>
+                        <div class="text-2xl font-bold text-orange-600">۴۰۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 7 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس مرغ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\مرغ تنوری.PNG" alt="مرغ تنوری" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">مرغ تنوری</h3>
+                        <p class="text-gray-600 mb-4">مرغ کامل در تنور با ادویه‌های خاص</p>
+                        <div class="text-2xl font-bold text-orange-600">۳۲۰ افغانی</div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 8 -->
+                <div class="menu-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- 📸 اینجا لینک عکس نوشیدنی را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\دوغ.PNG" alt="دوغ خانگی" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">دوغ خانگی</h3>
+                        <p class="text-gray-600 mb-4">دوغ تازه و خنک با نعنا</p>
+                        <div class="text-2xl font-bold text-orange-600">۲۰ افغانی</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="btn-primary text-white px-8 py-3 rounded-full text-lg font-semibold">
+                    مشاهده منوی کامل
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="section-title text-4xl font-bold text-gray-800 mb-8">درباره رستورانت نصیب</h2>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        رستورانت نصیب با بیش از ۱۰ سال تجربه در ارائه غذاهای اصیل افغانی، مکانی است که طعم‌های سنتی و مدرن را در کنار هم ارائه می‌دهد. ما با استفاده از بهترین مواد اولیه و دستان ماهر آشپزهای خود، تجربه‌ای فراموش‌نشدنی برای شما فراهم می‌کنیم.
+                    </p>
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        محیط گرم و صمیمی رستورانت نصیب، مکانی ایده‌آل برای گذراندن وقت با خانواده و دوستان است. از کباب‌های معروف تا پلوهای خوشمزه، همه چیز با عشق و دقت تهیه می‌شود.
+                    </p>
+                    <div class="flex items-center space-x-reverse space-x-4">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-orange-600">۱۰+</div>
+                            <div class="text-gray-600">سال تجربه</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-orange-600">۵۰+</div>
+                            <div class="text-gray-600">نوع غذا</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-orange-600">۱۰۰۰+</div>
+                            <div class="text-gray-600">مشتری راضی</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <!-- 📸 اینجا لینک عکس محیط رستورانت یا تیم آشپزها را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\محیط.PNG" alt="محیط رستورانت نصیب" class="w-full h-96 object-cover rounded-2xl shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-4xl font-bold text-center text-gray-800 mb-16">نگاهی به محیط و غذاهای ما</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item">
+                    <!-- 📸 اینجا لینک عکس محیط رستورانت ۱ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\محیط.PNG" alt="محیط رستورانت ۱">
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item">
+                    <!-- 📸 اینجا لینک عکس غذای ویژه ۱ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\خاص۱.PNG" alt="غذای ویژه ۱">
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item">
+                    <!-- 📸 اینجا لینک عکس محیط رستورانت ۲ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\۲محیط.PNG" alt="محیط رستورانت ۲">
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item">
+                    <!-- 📸 اینجا لینک عکس غذای ویژه ۲ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\خاص ۲.PNG" alt="غذای ویژه ۲">
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item">
+                    <!-- 📸 اینجا لینک عکس محیط رستورانت ۳ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\محیط ۳.PNG" alt="محیط رستورانت ۳">
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item">
+                    <!-- 📸 اینجا لینک عکس غذای ویژه ۳ را اضافه کنید -->
+                    <img src="C:\Users\KARIMI\Desktop\Templates\Hotle\خاص ۳.PNG" alt="غذای ویژه ۳">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-4xl font-bold text-center text-gray-800 mb-16">تماس با رستورانت نصیب</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">اطلاعات تماس</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-reverse space-x-4">
+                                <div class="text-orange-600 text-2xl">📍</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">آدرس:</h4>
+                                    <p class="text-gray-600">کابل، کوته سنگی، گولایی دواخانه، گذشته از شفاخانه مولا، هوتل و رستورانت نصیب</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-reverse space-x-4">
+                                <div class="text-orange-600 text-2xl">📞</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">شماره تماس:</h4>
+                                    <p class="text-gray-600">0778899100</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-reverse space-x-4">
+                                <div class="text-orange-600 text-2xl">💬</div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-2">واتساپ:</h4>
+                                    <p class="text-gray-600">0778899100</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 space-y-4">
+                            <a href="tel:0778899100" 
+                               class="btn-primary w-full text-white py-3 rounded-lg text-center font-semibold block">
+                                📞 تماس مستقیم
+                            </a>
+                            <a href="https://wa.me/93778899100" 
+                               target="_blank"
+                               class="bg-green-600 hover:bg-green-700 w-full text-white py-3 rounded-lg text-center font-semibold block transition-colors">
+                                💬 واتساپ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white rounded-2xl p-8 shadow-lg h-full">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">موقعیت ما</h3>
+                        
+                        <!-- 🗺️ اینجا iframe نقشه گوگل را اضافه کنید -->
+                        <iframe 
+                            src="https://maps.app.goo.gl/7KQf5x1hko5zwUtt9"
+                            width="100%" 
+                            height="320" 
+                            style="border:0; border-radius: 8px;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">🍽️ رستورانت نصیب</h3>
+                    <p class="text-gray-300">طعمی متفاوت در قلب کابل</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">لینک‌های سریع</h4>
+                    <div class="space-y-2">
+                        <a href="#home" class="block text-gray-300 hover:text-orange-400 transition-colors">خانه</a>
+                        <a href="#menu" class="block text-gray-300 hover:text-orange-400 transition-colors">منو</a>
+                        <a href="#contact" class="block text-gray-300 hover:text-orange-400 transition-colors">تماس</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">تماس با ما</h4>
+                    <p class="text-gray-300 mb-2">📞 0778899100</p>
+                    <p class="text-gray-300">📍 کابل، کوته سنگی</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2025 رستورانت نصیب | طراحی: Ali Mohammad Karimi
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-white/95', 'backdrop-blur-sm');
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-sm');
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9764df58e0e6f9fa',t:'MTc1NjM5NTI2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
